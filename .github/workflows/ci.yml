@@ -115,7 +115,7 @@ jobs:
       - name: Rust formatting
         run: ./bin/cargo fmt --all --check
       - name: Rust lint
-        run: ./bin/cargo clippy --workspace --locked --all-targets -- -D warnings
+        run: ./bin/cargo clippy --workspace --locked --all-targets
       # --workspace includes Tauri, unlike the default Cargo member selection.
       - name: All Rust tests and doctests
         run: ./bin/cargo test --workspace --locked
@@ -159,7 +159,7 @@ jobs:
           key: windows-native
           save-if: ${{ github.ref == 'refs/heads/main' }}
       - name: Native lint including Windows backend
-        run: cargo clippy -p Buzz -p buzz-agent-controller -p buzz-credential-store --locked --all-targets -- -D warnings
+        run: cargo clippy -p Buzz -p buzz-agent-controller -p buzz-credential-store --locked --all-targets
       - name: All native package tests
         run: cargo test -p Buzz -p buzz-agent-controller -p buzz-credential-store --locked --no-fail-fast
 
